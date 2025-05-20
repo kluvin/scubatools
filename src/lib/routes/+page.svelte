@@ -1,5 +1,5 @@
 <script lang="ts">
-  import NextUp from '../lib/components/NextUp.svelte'; // Adjusted path
+  import NextUp from '$lib/components/NextUp.svelte';
 </script>
 
 <svelte:head>
@@ -7,9 +7,6 @@
   <meta name="description" content="Oversikt over kommende dykketurer" />
 </svelte:head>
 
-<div class="">
-    <NextUp />
-</div>
 
 <style lang="postcss">
   :global(body) {

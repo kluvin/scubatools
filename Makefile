@@ -1,0 +1,56 @@
+# Makefile for the scubatools SvelteKit project
+
+# Variables
+BUN = bun
+
+# Phony targets (targets that don't represent actual files)
+.PHONY: install dev build build-custom-element check format clean all
+
+# Default target: runs when `make` is called without arguments
+default: dev
+
+install:
+	@echo "Installing dependencies..."
+	$(BUN) install
+
+dev:
+	@echo "Starting development server..."
+	$(BUN) run dev
+
+build:
+	@echo "Building SvelteKit application..."
+	$(BUN) run build
+
+build-custom-element:
+	@echo "Building NextUp.svelte as a custom element..."
+	$(BUN) run build:custom-element
+
+check:
+	@echo "Running checks (linting and type checking)..."
+	$(BUN) run check
+	$(BUN) run lint
+
+format:
+	@echo "Formatting code..."
+	$(BUN) run format
+
+clean:
+	@echo "Cleaning build artifacts..."
+	rm -rf dist
+	rm -rf .svelte-kit
+	@echo "Clean complete."
+
+all: build build-custom-element
+	@echo "All build tasks complete."
+
+help:
+	@echo "Available targets:"
+	@echo "  install               - Install project dependencies"
+	@echo "  dev                   - Start the development server (default)"
+	@echo "  build                 - Build the SvelteKit application"
+	@echo "  build-custom-element  - Build the NextUp.svelte component as a custom element"
+	@echo "  check                 - Run linting and type checks"
+	@echo "  format                - Format the codebase"
+	@echo "  clean                 - Remove build artifacts (dist, .svelte-kit)"
+	@echo "  all                   - Build both the SvelteKit app and the custom element"
+	@echo "  help                  - Show this help message" 
