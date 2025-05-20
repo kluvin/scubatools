@@ -4,7 +4,7 @@
 BUN = bun
 
 # Phony targets (targets that don't represent actual files)
-.PHONY: install dev build build-custom-element check format clean all
+.PHONY: install dev build build-custom-element check format clean all deploy
 
 # Default target: runs when `make` is called without arguments
 default: dev
@@ -41,6 +41,10 @@ clean:
 all: build
 	@echo "All build tasks complete."
 
+deploy: build
+	@echo "Deploying to Netlify..."
+	netlify deploy --prod
+
 help:
 	@echo "Available targets:"
 	@echo "  install               - Install project dependencies"
@@ -51,4 +55,5 @@ help:
 	@echo "  format                - Format the codebase"
 	@echo "  clean                 - Remove build artifacts (dist, .svelte-kit)"
 	@echo "  all                   - Build both the SvelteKit app and the custom element"
+	@echo "  deploy                - Build and deploy to Netlify"
 	@echo "  help                  - Show this help message" 
