@@ -43,7 +43,7 @@ all: build
 
 deploy: build
 	@echo "Deploying to Netlify..."
-	netlify deploy --prod
+	netlify deploy --prod --dir=build
 
 help:
 	@echo "Available targets:"
