@@ -21,9 +21,6 @@ build:
 	@echo "Building SvelteKit application..."
 	$(BUN) run build
 
-build-custom-element:
-	@echo "Building NextUp.svelte as a custom element..."
-	$(BUN) run build:custom-element
 
 check:
 	@echo "Running checks (linting and type checking)..."
@@ -38,9 +35,10 @@ clean:
 	@echo "Cleaning build artifacts..."
 	rm -rf dist
 	rm -rf .svelte-kit
+	rm -rf build
 	@echo "Clean complete."
 
-all: build build-custom-element
+all: build
 	@echo "All build tasks complete."
 
 help:
